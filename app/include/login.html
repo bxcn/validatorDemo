@@ -1,0 +1,30 @@
+<h1>登录验证</h1>
+<div class="w1000">
+  <form class="validate1" method="get" action="">
+    <ul>
+      <li>
+        <label >用户名：</label>
+        <input  name="username1" type="text" class="username">
+      </li>
+      <li>
+        <label>密码：</label>
+        <input name="password1" type="text" class="password" />
+      </li>
+      <li>
+        <label></label>
+        <button class="submit" type="submit">确定</button>
+      </li>
+    </ul>
+  </form>
+</div>
+<!--code-->
+  <script>
+    $(".validate1").validate({
+      // 包裹容器
+      errorLabelContainer: "body",
+      submitHandler: function(form) {
+        alert("success");
+      }
+    });
+  </script>
+<!--code-->

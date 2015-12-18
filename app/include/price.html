@@ -1,0 +1,90 @@
+<h1>价格区间</h1>
+<div class="w1000">
+  <form class="validate3" method="get" action="">
+    <ul>
+      <li>
+        <label>价格区间：</label>
+        <input id="priceStart" class="minInput" name="priceStart" type="text">
+        <label class="note">-</label>
+        <input id="priceEnd" class="minInput" name="priceEnd" type="text">
+      </li>
+      <li>
+        <label>价格区间：</label>
+        <select id="priceStart1" class="minInput" name="priceStart1">
+          <option value="10">10元</option>
+          <option value="20">20元</option>
+          <option value="30">30元</option>
+          <option value="40">40元</option>
+          <option value="50">50元</option>
+          <option value="60">60元</option>
+          </select>
+        <label class="note">-</label>
+        <select id="priceEnd1" class="minInput" name="priceEnd1">
+        <option value="10">10元</option>
+        <option value="20">20元</option>
+        <option value="30">30元</option>
+        <option value="40">40元</option>
+        <option value="50">50元</option>
+        <option value="60">60元</option>
+        </select>
+      </li>
+      <li>
+        <label></label>
+        <button class="submit" type="submit">确定</button>
+      </li>
+    </ul>
+  </form>
+
+</div>
+
+<script>
+  $(".validate3").validate({
+    rules: {
+      "priceStart": {
+        required: true,
+        digits: true,
+        lt: "#priceEnd"
+      }
+      ,"priceEnd": {
+        required: true,
+        digits: true,
+        gt: "#priceStart"
+      },
+      "priceStart1": {
+        required: true,
+        digits: true,
+        lt: "#priceEnd1"
+      }
+      ,"priceEnd1": {
+        required: true,
+        digits: true,
+        gt: "#priceStart1"
+      }
+    }
+    ,messages: {
+      priceStart: {
+        required: "开始价格不能为空",
+        digits: "请输入正确的价格",
+        lt: "开始价格不能大于结束价格"
+      }
+      ,priceEnd: {
+        required: "结束价格不能为空",
+        digits: "请输入正确的价格",
+        gt: "开始价格不能小于结束价格"
+      }
+      ,priceStart1: {
+        required: "开始价格不能为空",
+        digits: "请输入正确的价格",
+        lt: "开始价格不能大于结束价格"
+      }
+      ,priceEnd1: {
+        required: "结束价格不能为空",
+        digits: "请输入正确的价格",
+        gt: "开始价格不能小于结束价格"
+      }
+    }
+    ,submitHandler: function(form) {
+      alert("success");
+    }
+  });
+</script>

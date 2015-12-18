@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>修改密码</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/jquery.validate.css">
+    <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/lib/additional-methods.min.js"></script>
+    <script type="text/javascript" src="js/addValidateMethod.js"></script>
+  </head>
+  <body>
+  <h1>修改密码</h1>
+  <div class="w1000">
+    <form class="modifyUserPassWord" method="get" action="">
+      <ul style="">
+        <li>
+          <label>原密码：</label>
+          <input id="oldPwd" type="password" value="" name="opwd">
+        </li>
+        <li>
+          <label>新密码：</label>
+          <input id="newPwd" type="password" value="" name="npwd">
+        </li>
+        <li>
+          <label>确认新密码：</label>
+          <input type="password" value="" name="repwd">
+        </li>
+        <li>
+          <label></label>
+          <button class="submit" type="submit">确定</button>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <style>
+  </style>
+  <script>
+
+    var modifyUserPassWord = $(".modifyUserPassWord").validate({
+      rules: {
+        opwd: {
+          required: true,
+          password:true,
+          unequalTo:"#newPwd"
+        }
+        ,npwd: {
+          required: true,
+          password:true
+        }
+        ,repwd: {
+          required: true,
+          password:true,
+          equalTo:"#newPwd"
+        }
+
+      }
+      ,messages: {
+        opwd: {
+          required: "请输入内容",
+          password:"密码(6-16字母、数字、无空格)",
+          unequalTo:"新密码与原密码一致"
+        }
+        ,npwd: {
+          required: "请输入内容",
+          password:"密码(6-16字母、数字、无空格)"
+        }
+        ,repwd: {
+          required: "请输入内容",
+          password:"密码(6-16字母、数字、无空格)",
+          equalTo:"新密码与确认密码不一致"
+        }
+      }
+      ,submitHandler: function(form) {
+        alert("success");
+      }
+    });
+
+    $(window).resize(function(){
+      modifyUserPassWord.resetform();
+    });
+  </script>
+
+  </body>
+</html>

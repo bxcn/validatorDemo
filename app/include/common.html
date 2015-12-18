@@ -1,0 +1,32 @@
+<h1>功能模块导航</h1>
+<div class="w1000">
+  <script>
+    jQuery.validator.setDefaults({
+      /*showErrors: function(map, list) {
+        $("#topTip").hide();
+        this.currentElements.removeAttr("title");//.removeClass("error");
+        var form = this.currentForm;
+        $.each(list, function(index, error) {
+          var ele = $(error.element);
+          var offset = ele.offset();
+          var eleHeight = ele.outerHeight();
+          var eleTop = +offset.top + eleHeight + 8;
+          var eleLeft = offset.left;
+          $("#topTip").css({"left": eleLeft, "top": eleTop}).show().find(".error-txt").html(error.message);
+          $(error.element).attr("title", error.message).addClass("error");
+        });
+      }*/
+    });
+  </script>
+</div>
+<div id="topTip" class="toolTip">
+  <span class="error-msg">
+     <span class="error-icon">
+       <b>◆</b>
+      <i>◆</i>
+     </span>
+     <span class="error-txt">
+       验证失败
+     </span>
+  </span>
+</div>

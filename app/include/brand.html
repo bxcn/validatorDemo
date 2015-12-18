@@ -1,0 +1,68 @@
+<h1>二选一</h1>
+<div class="w1000">
+  <form class="validate8" method="get" action="">
+    <ul style="">
+      <li>
+        <label>中文品牌名：</label>
+        <input class="brand-group" name="cnbrand" type="text">
+
+      </li>
+      <li>
+        <label>英文品牌名：</label>
+        <input class="brand-group" name="enbrand" type="text">
+      </li>
+      <li>
+        <label></label>
+        <button class="submit" type="submit">确定</button>
+      </li>
+    </ul>
+  </form>
+
+</div>
+<style>
+  .error {
+    color:red;
+  }
+  .success {
+    color:green;
+  }
+</style>
+<script>
+
+  var validate8 = $(".validate8").validate({
+    //errorClass: "jqueryValidaterError",
+    errorClass: "error",
+    validClass:"success",
+    ignore:true,
+    // wrapper: "div",
+   // errorDivContainer: "#messageBox div",
+    rules: {
+      cnbrand: {
+          chinese:true,
+          require_from_group: [1, ".brand-group"]
+        },
+      enbrand: {
+        english: true,
+          require_from_group: [1, ".brand-group"]
+        }
+    }
+    ,messages: {
+      cnbrand: {
+        chinese: "请输入中文多个之间用空格分隔",
+        require_from_group: "中文名和英文名有一项必填"
+      },
+      enbrand: {
+        english: "请输入英文多个之间用空格分隔",
+        require_from_group: "中文名和英文名有一项必填"
+      }
+    }
+    ,submitHandler: function(form) {
+      alert("success");
+    }
+  });
+
+  $(window).resize(function(){
+    validate8.resetform();
+  });
+
+</script>

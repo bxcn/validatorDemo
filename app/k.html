@@ -1,0 +1,370 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>爱伙伴 | MGR</title>
+  <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+  <meta name="description" content="Developed By M Abdur Rokib Promy">
+  <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
+  <!-- bootstrap 3.0.2 -->
+  <link href="http://192.168.6.138:82/mgr/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+  <!-- Morris chart -->
+  <link href="http://192.168.6.138:82/mgr/css/morris/morris.css" rel="stylesheet" type="text/css" />
+
+  <!-- Daterange picker -->
+  <link href="http://192.168.6.138:82/mgr/css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+  <link href="http://192.168.6.138:82/mgr/css/jquery-ui.min.css" rel="stylesheet" />
+  <!-- <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css"> -->
+
+
+  <!-- Theme style -->
+  <link href="http://192.168.6.138:82/mgr/css/style.css" rel="stylesheet" type="text/css" />
+
+  <style>
+    .toggler { width: 500px; height: 200px; }
+    #button { padding: .5em 1em; text-decoration: none; }
+    #effect { width: 240px; height: 135px; padding: 0.4em; position: relative; }
+    #effect h3 { margin: 0; padding: 0.4em; text-align: center; }
+  </style>
+</head>
+<body class="skin-black">
+<!-- header logo: style can be found in header.less -->
+<header class="header">
+  <a href="#" class="logo"> 爱伙伴MGR </a>
+  <!-- Header Navbar: style can be found in header.less -->
+  <nav class="navbar navbar-static-top" role="navigation">
+    <!-- Sidebar toggle button-->
+    <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas"
+       role="button"> <span class="sr-only">Toggle navigation</span> <span
+      class="icon-bar"></span> <span class="icon-bar"></span> <span
+      class="icon-bar"></span>
+    </a>
+    <div class="navbar-right">
+      <ul class="nav navbar-nav">
+
+      </ul>
+    </div>
+  </nav>
+</header>
+<div class="wrapper row-offcanvas row-offcanvas-left">
+  <!-- Left side column. contains the logo and sidebar -->
+
+
+
+  <aside class="left-side sidebar-offcanvas">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="http://192.168.6.138:82/mgr/img/26115.jpg" class="img-circle" alt="User Image" />
+        </div>
+        <div class="pull-left info">
+          <p>Hello, servant1</p>
+
+          <!-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> -->
+        </div>
+      </div>
+      <div>
+        <ul id="Mu1" class="sidebar-menu">
+
+
+
+          <li><a href="http://192.168.6.138:82/mgr/4/company/list"> <i class="fa fa-dashboard"></i> <span>公司客户列表</span></a></li>
+          <li><a href="http://192.168.6.138:82/mgr/7/dynamic/list/1"> <i class="fa fa-dashboard"></i> <span>动态列表</span></a></li>
+
+
+
+          <li><a href="http://192.168.6.138:82/mgr/logout"> <i
+            class="fa fa-dashboard"></i> <span>注销</span>
+          </a></li>
+
+          </a></li>
+
+        </ul>
+      </div>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+
+
+
+  <aside class="right-side">
+
+    <section class="panel">
+      <div class="panel-body">
+        <form id="companySearchBo" role="form" class="form-inline" action="/mgr/4/company/list" method="POST">
+          <div class="form-group">
+            注册时间：<input id="createStartTime" name="createStartTime" style="width:100px" placeholder="开始时间" class="form-control" type="text" value=""/>&nbsp;至&nbsp;<input id="createEndTime" name="createEndTime" style="width:100px" placeholder="结束时间" class="form-control" type="text" value=""/>
+
+            <input id="companyName" name="companyName" style="width:220px" placeholder="用户名/企业名/企业ID" class="form-control" type="text" value=""/>
+
+
+            客服编号：<input id="servantId" name="servantId" style="width:120px" placeholder="客服编号" class="form-control" readonly="readonly" type="text" value="1004"/><br/><br/>
+
+
+            企业规模：
+            <select id="compSize" name="compSize" style="width:120px" class="form-control input-sm m-b-10">
+              <option value=""></option>
+              <option value="1">少于20</option>
+              <option value="2">20-50</option>
+              <option value="3">50-100</option>
+              <option value="4">100-200</option>
+              <option value="5">200-500</option>
+              <option value="6">500以上</option>
+            </select>
+            所在地：
+            <select id="location" name="location" name="name" class="form-control input-sm m-b-10 minSelect">
+              <option value="">省/市/自治区</option>
+              <option value="1001">北京市</option>
+              <option value="1002">天津市</option>
+              <option value="1003">上海市</option>
+              <option value="1004">重庆市</option>
+              <option value="1005">江苏省</option>
+              <option value="1006">浙江省</option>
+              <option value="1007">河南省</option>
+              <option value="1008">山东省</option>
+              <option value="1009">山西省</option>
+              <option value="1010">河北省</option>
+              <option value="1011">湖北省</option>
+              <option value="1012">辽宁省</option>
+              <option value="1013">四川省</option>
+              <option value="1014">广东省</option>
+              <option value="1015">福建省</option>
+              <option value="1016">陕西省</option>
+              <option value="1017">甘肃省</option>
+              <option value="1018">宁夏</option>
+              <option value="1019">安徽省</option>
+              <option value="1020">湖南省</option>
+              <option value="1021">吉林省</option>
+              <option value="1022">黑龙江省</option>
+              <option value="1023">江西省</option>
+              <option value="1024">贵州省</option>
+              <option value="1025">云南省</option>
+              <option value="1026">广西省</option>
+              <option value="1027">海南省</option>
+              <option value="1028">西藏</option>
+              <option value="1029">青海省</option>
+              <option value="1030">新疆</option>
+              <option value="1031">内蒙古</option>
+              <option value="1032">香港</option>
+              <option value="1033">澳门</option>
+              <option value="1034">台湾</option>
+            </select><br/>
+          </div>
+          <button type="submit" class="btn btn-success">搜索</button>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="col-lg-12">
+        <section class="panel">
+          <header class="panel-heading">公司列表</header>
+          <header class="panel-heading">
+            <label> 全部用户：332
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              待审核用户：42
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              新动态用户：51
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              变更关键词用户：0
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              审核失败用户：0
+              &nbsp;&nbsp;&nbsp;&nbsp; </label>
+          </header>
+          <div class="panel-body table-responsive">
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th>用户名</th>
+                <th>注册时间</th>
+                <th>企业名称</th>
+                <th>企业ID</th>
+                <th>审核状态</th>
+                <th>所在地</th>
+                <th>规模</th>
+                <th>剩余点数</th>
+                <th>企业特征词</th>
+                <th>客服座席</th>
+                <th>操作</th>
+                <!-- <th>审核</th> -->
+              </tr>
+              </thead>
+              <tbody>
+
+              <tr>
+                <td><a href="http://192.168.6.138:82/mgr/7/dynamic/list/1/?compId=E10001104">dptest</a></td>
+                <td>2015-12-17</td>
+                <td>大众点评测试公司</td>
+                <td><a href="http://192.168.6.138:82/mgr/4/emp/list/464/1">E10001104</a></td>
+                <td><a class="open-next" href="javascript:void(0)"> 合格 </a>
+                </td>
+                <td>北京市/北京市</td>
+                <td> 100-200人 </td>
+                <td> </td>
+                <td>
+                  <a href="http://192.168.6.138:82/mgr/4/company/approve/464">已审核</a>
+                </td>
+                <td>1004</td>
+                <td><a href="http://192.168.6.138:82/mgr/4/company/edit/464">编辑</a>/
+                  <a href="http://192.168.6.138:82/mgr/4/consume/list/464">续费</a>/
+                  <a href="http://192.168.6.138:82/mgr/4/company/resetpwd/464">重置密码</a>/
+                  <a href="http://192.168.6.138:82/mgr/4/notifiers/464">增加通知人</a>
+                </td>
+              </tr>
+              <tr style="display:none;">
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+              </tr>
+
+
+
+
+              </tbody>
+            </table>
+            <table style="width: 100%">
+              <tbody>
+              <tr>
+                <td align="center" style="width: 100%">上一页
+
+
+
+                  &nbsp;&nbsp;1&nbsp;
+
+
+                  下一页
+                  &nbsp;&nbsp; 共&nbsp;1&nbsp;页</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+
+      </div>
+      <!--end col-6 -->
+
+
+
+    </section>
+  </aside>
+</div>
+
+
+
+<!-- 开通帐号确认框 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">确认开通帐号</h4>
+      </div>
+      <div class="modal-body">点击确定开通该帐号，所选套餐同时生效。</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary"
+                onclick="openAccount()">确认</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- jQuery 2.0.2 -->
+<script src="http://192.168.6.138:82/mgr/js/jquery.min.js" type="text/javascript"></script>
+<script src="http://192.168.6.138:82/mgr/js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+<script src="http://192.168.6.138:82/mgr/js/jqueryui/jquery-ui.min.js" type="text/javascript"></script>
+<!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css"> -->
+
+
+
+<script type="text/javascript">
+
+  $(function() {
+    $('#createStartTime').datepicker({dateFormat: 'yy-mm-dd'});
+    $('#createEndTime').datepicker({dateFormat: 'yy-mm-dd'});
+  });
+
+  function showModal(compid){
+    $("#myModal").modal("show");
+  }
+
+  function openAccount(id){
+    var r = confirm("点击确定开通该帐号，所选套餐同时生效!");
+    if (r == true) {
+      /* alert("You pressed OK! " + id); */
+      window.location.href="http://192.168.6.138:82/mgr/company/openaccount/" + id;
+    }
+  }
+
+</script>
+
+<script>
+  function approveShow(obj, compId){
+    //alert("compId:" + compId );
+    //var boarddiv="<tr><td><div style='background:white;width:80%;height:10%;z-index:999;position:absolute;top:0;margin-top:100px;'>加载中...</div></td></tr>";
+    //$(obj).parent().parent().after(boarddiv);
+    //var id=
+    $( "#EE"+compId ).attr("style", "");
+    //alert($(obj).parent().parent().html());
+    //.after(boarddiv);
+    //return null;
+  }
+  $(function() {
+    // 运行当前选中的特效
+    function runEffect() {
+      // 运行特效
+      $( "#EE" ).toggle("fast");
+    };
+
+    // 根据选择菜单值设置特效
+    $( "#button" ).click(function() {
+      runEffect();
+      return false;
+    });
+  });
+</script>
+<script>
+  $(function(){
+    $(".open-next").click(function(){
+      var currTr = $(this).closest("tr");
+      var nextTr = currTr.next();
+
+      if ( nextTr.css("display") == "none") {
+        nextTr.show();
+      } else {
+        nextTr.hide();
+      }
+    });
+  })
+</script>
+</body>
+
+</html>
