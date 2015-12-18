@@ -1,2 +1,2 @@
-Jauery 表彰验证Demo
+Jauery 表单验证Demo
 =======================
