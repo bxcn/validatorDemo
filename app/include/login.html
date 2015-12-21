@@ -4,11 +4,11 @@
     <ul>
       <li>
         <label >用户名：</label>
-        <input  name="username1" type="text" class="username">
+        <input  name="username" type="text" class="username isExsitUserName" autocomplete="off">
       </li>
       <li>
         <label>密码：</label>
-        <input name="password1" type="text" class="password" />
+        <input name="password" type="text" class="password" />
       </li>
       <li>
         <label></label>
@@ -20,8 +20,6 @@
 <!--code-->
   <script>
     $(".validate1").validate({
-      // 包裹容器
-      errorLabelContainer: "body",
       submitHandler: function(form) {
         alert("success");
       }

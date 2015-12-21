@@ -327,15 +327,7 @@
 
     messages: {
       required: "请输入内容",
-      username: "请填写包含中文/字母/数字的1到50位字符",
-      isExsitUserName: "用户名已存在",
-      password:"密码(6-16字母、数字、无空格)",
-      sex:"请选择性别",
-      protocol:"请先接受用户服务协议",
       email: "邮箱格式不正确",
-      mobile: "手机格式不正确",
-      telphone: "固定电话格式不正确",
-      linkman: "联系人格式不正确",
       remote: "Please fix this field.",
       url: "Please enter a valid URL.",
       date: "Please enter a valid date.",
@@ -1012,9 +1004,6 @@
 
     classRuleSettings: {
       required: { required: true },
-      username: { username: true },
-      password: { password: true },
-      protocol: {  protocol: true }, // 协议验证
       url: { url: true },
       date: { date: true },
       dateISO: { dateISO: true },
@@ -1232,105 +1221,9 @@
         return value.length > 0;
       },
 
-      username: function( value, element ) {
-
-        var regexRet = true;
-        var max = 50;
-        var min = 1;
-        var byteValLen = 0;
-        for (var i = 0; i < value.length; i++) {
-          if (value[i].match(/[^\x00-\xff]/ig) != null)
-            byteValLen += 2;
-          else
-            byteValLen += 1;
-
-          if (byteValLen > max || byteValLen < min ) {
-            regexRet = false;
-          }
-        }
-        if (!/^[a-zA-Z0-9\u0391-\uFFE5]{1,100}$/.test( value )) {
-          regexRet = false;
-        }
-        return regexRet;
-      },
-
-      isExsitUserName: function( value, element,param ) {
-        var username = $.trim($(element).val());
-        var ret = true;
-        $.ajax({
-          url: "json/isExsitUserName.json",
-          type:"get",
-          async:false,
-          data: {username: username},
-          dataType: "json",
-          success: function (json) {
-            ret = json.success;
-          }
-        });
-        return ret;
-      },
-
-      password: function( value, element ) {
-        return /^[a-zA-Z0-9]{6,16}$/.test( value );
-      },
       // 小于
       checkedLen: function( value, element, param ) {
 
-        // 参数不是数组
-        if ( param == true ) return true;
-
-        var min = param[0];
-        var max = param[1];
-        var checkName = $(element).attr("name");
-        var checkboxLen = $(element).closest("form").find("input[name='" + checkName + "']:checked").size();
-
-        if ( checkboxLen >= min && checkboxLen <= max ) {
-          return true;
-        }
-        return false;
-      },
-
-      // 固定电话
-      telphone: function( value, element ) {
-        return   value == "" || this.optional( element ) || /^(?:(?:0\d{2,3}[\- ]?[1-9]\d{6,7})|(?:[48]00[\- ]?[1-9]\d{6}))$/.test( value );
-      },
-
-      // 手机
-      mobile: function( value, element ) {
-        return   value == "" || this.optional( element ) || /^1(3|4|5|7|8)\d{9}$/.test( value );
-      },
-
-      // 中文
-      chinese: function( value, element ) {
-        return   value == "" || /^[(\u0391-\uFFE5\s)]{0,}$/.test(value);
-      },
-      // 英文
-      english: function( value, element ) {
-        return   value == "" || /^[(a-zA-Z0-9\s)]{0,}$/.test(value);
-      },
-      // 性别
-      sex: function( value, element ) {
-        return +value > -1;
-      },
-      // 接受用户服务协议
-      protocol: function( value, element ) {
-        return +value > -1;
-      },
-      // 联系人
-      linkman: function( value, element ) {
-        return   value == "" || /^[(a-zA-Z0-9\u0391-\uFFE5)]{1,}$/.test(value);
-      },
-      // 身份
-      idcard: function( value, element ) {
-        return /^\d{6}(19|2\d)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)?$/.test(value);
-      },
-      // qq
-      qq: function( value, element ) {
-        return value == "" || /^[1-9]\d{4,10}$/.test(value);
-      },
-      // 邮箱
-      zipcode: function( value, element ) {
-        return  value == "" || /^[1-9]\d{5}$/.test(value);
       },
 
       // http://jqueryvalidation.org/email-method/
@@ -1443,18 +1336,6 @@
         return this.optional( element ) || ( value >= param[ 0 ] && value <= param[ 1 ] );
       },
 
-      // 小于
-      lt: function( value, element, param ) {
-        var target = $( param );
-        return +value < +target.val();
-      },
-
-      // 大于
-      gt: function( value, element, param ) {
-        var target = $( param );
-        return +value > +target.val();
-      },
-
       // http://jqueryvalidation.org/equalTo-method/
       equalTo: function( value, element, param ) {
         // bind to the blur event of the target in order to revalidate whenever the target field is updated
@@ -1466,11 +1347,6 @@
           });
         }
         return value === target.val();
-      },
-      // http://jqueryvalidation.org/equalTo-method/
-      unequalTo: function( value, element, param ) {
-        var target = $( param );
-        return value !== target.val();
       },
 
       // http://jqueryvalidation.org/remote-method/

@@ -4,11 +4,11 @@
     <ul>
       <li>
         <label>手机号：</label>
-        <input name="mobile" type="text">
+        <input name="mobilessss" type="text" class="mobile">
       </li>
       <li>
         <label>固定电话：</label>
-        <input name="phone" type="text">
+        <input name="phone" type="text" class="telphone">
       </li>
       <li>
         <label></label>
@@ -23,31 +23,9 @@
   $(".validate6").validate({
     errorClass: "error",
     validClass:"success",
-    errorElement: "div",
-    rules: {
-      "phone": {
-        required: true,
-        telphone: true
-      }
-      ,"mobile": {
-        required: true,
-        mobile: true
-      }
-    }
-    ,messages: {
-      phone :{
-        required: "固定电话不能为空",
-        telphone: "固定电话格式不正确"
-      }
-      ,mobile: {
-        required: "手机号不能为空",
-        mobile: "手机格式不正确"
-      }
-    }
+    errorElement: "div"
     ,submitHandler: function(form) {
       alert("success");
     }
   });
-
-
 </script>

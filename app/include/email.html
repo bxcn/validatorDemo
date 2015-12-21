@@ -3,8 +3,45 @@
   <form class="validate9" method="get" action="">
     <ul>
       <li>
+        <label>请输入中文：</label>
+        <input name="chinese" type="text" class="chinese" value="" required>
+      </li>
+      <li>
+        <label>请输入英文：</label>
+        <input name="english" type="text" class="english" value="" required>
+      </li>
+      <li>
+        <label>性别：</label>
+        <input name="sex" type="radio" class="sex" value="0" required> 女
+        <input name="sex" type="radio" class="sex" value="1" required> 男
+      </li>
+      <li>
+        <label>用户服务协议：</label>
+        <input name="protocol" type="checkbox" class="protocol" value="0" required>
+      </li>
+      <li>
+        <label>联系人：</label>
+        <input name="zipcode" type="text" class="linkman">
+      </li>
+      <li>
+        <label>联系人：</label>
+        <input name="zipcode" type="text" class="linkman">
+      </li>
+      <li>
+        <label>身份证：</label>
+        <input name="idcard" type="text" class="idcard" required>
+      </li>
+      <li>
+        <label>邮编：</label>
+        <input name="zipcode" type="text" class="zipcode" required>
+      </li>
+      <li>
+        <label>QQ：</label>
+        <input name="qq" type="text" class="qq" >
+      </li>
+      <li>
         <label>公司邮箱：</label>
-        <input name="email" type="text">
+        <input name="email" type="email" class="email">
       </li>
       <li>
         <label></label>
@@ -17,20 +54,7 @@
 
 <script>
   $(".validate9").validate({
-    errorElement: "div",
-    rules: {
-      "email": {
-        required: true,
-        email: true,
-      }
-    }
-    ,messages: {
-      email: {
-        required: "邮箱不能为空",
-        email: "邮箱格式不正确"
-      }
-    }
-    ,submitHandler: function(form) {
+    submitHandler: function(form) {
       alert("success");
     }
   });

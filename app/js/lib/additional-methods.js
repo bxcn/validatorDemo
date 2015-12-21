@@ -999,4 +999,162 @@
     return this.optional(element) || /^90[2-5]\d\{2\}-\d{4}$/.test(value);
   }, "Your ZIP-code must be in the range 902xx-xxxx to 905xx-xxxx");
 
+
+  // 手机
+/*  mobile: function( value, element ) {
+    return   value == "" || this.optional( element ) || /^1(3|4|5|7|8)\d{9}$/.test( value );
+  },*/
+
+  $.validator.addMethod("username", function(value, element) {
+
+    var regexRet = true;
+    var max = 50;
+    var min = 1;
+    var byteValLen = 0;
+    for (var i = 0; i < value.length; i++) {
+      if (value[i].match(/[^\x00-\xff]/ig) != null)
+        byteValLen += 2;
+      else
+        byteValLen += 1;
+
+      if (byteValLen > max || byteValLen < min ) {
+        regexRet = false;
+      }
+    }
+    if (!/^[a-zA-Z0-9\u0391-\uFFE5]{1,100}$/.test( value )) {
+      regexRet = false;
+    }
+    return this.optional( element ) || regexRet;
+
+  }, "请填写包含中文/字母/数字的1到50位字符");
+
+  $.validator.addMethod("isExsitUserName", function(value, element) {
+    var username = $.trim($(element).val());
+    var ret = true;
+
+    if ( !this.optional( element ) ) {
+      $.ajax({
+        url: "json/isExsitUserName.json",
+        type:"get",
+        async:false,
+        data: {value: username},
+        dataType: "json",
+        success: function (json) {
+          ret = json.success;
+        }
+      });
+    }
+    return  ret;
+  }, "不好意思,已存在!");
+
+  $.validator.addMethod("password", function(value, element) {
+    return this.optional( element ) || /^[a-zA-Z0-9]{6,16}$/.test( value );
+  }, "密码(6-16字母、数字、无空格)");
+
+  $.validator.addMethod("mobile", function(value, element) {
+    return this.optional( element ) || /^1(3|4|5|7|8)\d{9}$/.test( value );
+  }, "手机格式不正确");
+
+  // 邮编
+  $.validator.addMethod("zipcode", function(value, element) {
+    return  this.optional( element ) ||  /^[1-9]\d{5}$/.test(value);
+  }, "邮编格式不正确");
+
+  // QQ
+  $.validator.addMethod("qq", function(value, element) {
+    return  this.optional( element ) ||  /^[1-9]\d{4,10}$/.test(value);
+  }, "QQ号码格式不正确");
+
+  // idcard
+  $.validator.addMethod("idcard", function(value, element) {
+    return  this.optional( element ) ||  /^\d{6}(19|2\d)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)?$/.test(value);
+  }, "身份证号码格式不正确");
+
+  // 联系人
+  $.validator.addMethod("linkman", function(value, element) {
+    return  this.optional( element ) ||  /^[(a-zA-Z0-9\u0391-\uFFE5)]{1,}$/.test(value);
+  }, "联系人格式不正确");
+
+  // 接受用户服务协议
+  $.validator.addMethod("protocol", function(value, element) {
+    return  this.optional( element ) ||  +value > -1;
+  }, "请接受用户服务协议");
+
+  // 性别
+  $.validator.addMethod("sex", function(value, element) {
+    return  this.optional( element ) ||  +value > -1;
+  }, "性别格式不正确");
+
+  // 请输入中文
+  $.validator.addMethod("chinese", function(value, element) {
+    return  this.optional( element ) ||  /^[(\u0391-\uFFE5\s)]{0,}$/.test(value);
+  }, "中文格式不正确");
+
+  // 请输入英文
+  $.validator.addMethod("english", function(value, element) {
+    return  this.optional( element ) ||  /^[(a-zA-Z0-9\s)]{0,}$/.test(value);
+  }, "英文格式不正确");
+
+  // 固定电话
+  $.validator.addMethod("telphone", function(value, element) {
+    return  this.optional( element ) ||  /^(?:(?:0\d{2,3}[\- ]?[1-9]\d{6,7})|(?:[48]00[\- ]?[1-9]\d{6}))$/.test( value );
+  }, "固定电话格式不正确");
+
+  // 价格格式
+  $.validator.addMethod("price", function(value, element) {
+    return this.optional( element ) || /^\d+$/.test( value );
+  }, "价格格式不正确");
+
+  // 价格小于
+  $.validator.addMethod("pricestart", function(value, element, param) {
+    var target = $( param );
+    return this.optional( element ) ||  target.val() == "" || +value <= +target.val();
+  }, "开始价格不能大于结束价格");
+
+  // 价格大于
+  $.validator.addMethod("priceend", function(value, element, param) {
+    var target = $( param );
+    return this.optional( element ) ||  target.val() == "" ||  +value >= +target.val();
+  }, "开始价格不能小于结束价格");
+
+
+  // 小于
+  $.validator.addMethod("lt", function(value, element, param) {
+    var target = $( param );
+    return this.optional( element ) ||  target.val() == "" || +value <= +target.val();
+  }, "不能大于");
+
+  // 大于
+  $.validator.addMethod("gt", function(value, element, param) {
+    var target = $( param );
+    return this.optional( element ) ||  target.val() == "" ||  +value >= +target.val();
+  }, "不能小于");
+
+
+  // 不相等
+  $.validator.addMethod("unequalTo", function(value, element, param) {
+    var target = $( param );
+    return value !== target.val();
+  }, "不相等");
+
+  // checkbox选中的区间
+  $.validator.addMethod("checkedLen", function(value, element, param) {
+
+    // 参数不是数组
+    if ( param == true ) return true;
+
+    param = $.parseJSON(param);
+
+    var min = param[0];
+    var max = param[1];
+    var checkName = $(element).attr("name");
+    var checkboxLen = $(element).closest("form").find("input[name='" + checkName + "']:checked").size();
+
+    if ( checkboxLen >= min && checkboxLen <= max ) {
+      return true;
+    }
+    return false;
+
+  }, "选择个数不正确");
+
 }));

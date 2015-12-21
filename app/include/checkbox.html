@@ -4,24 +4,24 @@
     <ul>
       <li>
         <label>兴趣爱好：</label>
-        <input class="minInput" name="like" type="checkbox" value="1">
+        <input class="minInput checkedLen" name="like" type="checkbox" checkedLen="[3,5]" value="1" required>
         <label class="note">看书</label>
-        <input class="minInput" name="like" type="checkbox" value="2">
+        <input class="minInput checkedLen" name="like" type="checkbox" value="2">
         <label class="note">电影</label>
-        <input class="minInput" name="like" type="checkbox" value="3">
+        <input class="minInput checkedLen" name="like" type="checkbox" value="3">
         <label class="note">音乐</label>
-        <input class="minInput" name="like" type="checkbox" value="0">
+        <input class="minInput checkedLen" name="like" type="checkbox" value="0">
         <label class="note">旅游</label>
       </li>
       <li>
         <label></label>
-        <input class="minInput" name="like" type="checkbox" value="5">
+        <input class="minInput checkedLen" name="like" type="checkbox" value="5">
         <label class="note">看电视</label>
-        <input class="minInput" name="like" type="checkbox" value="6">
+        <input class="minInput checkedLen" name="like" type="checkbox" value="6">
         <label class="note">网上充浪</label>
-        <input class="minInput" name="like" type="checkbox" value="0">
+        <input class="minInput checkedLen" name="like" type="checkbox" value="0">
         <label class="note">跑步</label>
-        <input class="minInput" name="like" type="checkbox" value="8">
+        <input class="minInput checkedLen" name="like" type="checkbox" value="8">
         <label class="note">游戏</label>
       </li>
       <li>
@@ -35,19 +35,7 @@
 
 <script>
   $(".validate5").validate({
-    rules: {
-      "like": {
-        required: true,
-        checkedLen: [3,5],
-      }
-    }
-    ,messages: {
-      like: {
-        required: "兴趣爱好不能为空",
-        checkedLen: "请选择3-5个兴趣爱好"
-      }
-    }
-    ,submitHandler: function(form) {
+    submitHandler: function(form) {
       alert("success");
     }
   });

@@ -15,11 +15,11 @@
 
           <li>
             <span class="name">用户名：</span>
-            <input type="text" class="inputItem" name="username"  placeholder="请输入用户名">
+            <input type="text" class="inputItem" name="username"  placeholder="请输入用户名" autocomplete="off">
           </li>
           <li>
             <span class="name">选择上传文件：</span>
-            <input id="file" name="file" type="file" class="inputItem"  accept="image/*,audio/*">
+            <input id="file" name="file" type="file" class="inputItem"  accept="image/*,audio/*" autocomplete="off">
           </li>
           <li>
             <span class="name">密码：</span>
@@ -31,7 +31,7 @@
           </li>
           <li>
             <span class="name">联系人：</span>
-            <input type="text" class="inputItemMid" name="linkman"   placeholder="请输入联系人" value="">
+            <input type="text" class="inputItemMid linkman" name="linkman"   placeholder="请输入联系人" value="">
             <div class="sex">
               <input id="sex1" type="radio" name="sex" class="sex"  sex="false" checked value="2" >
               <i class="checked"></i>
@@ -45,26 +45,26 @@
           </li>
           <li>
             <span class="name">邮箱：</span>
-            <input type="text" class="inputItem"  name="email"  placeholder="请输入常用邮箱">
+            <input type="email" class="inputItem email"  name="email"  placeholder="请输入常用邮箱">
           </li>
           <li>
             <span class="name">身份证：</span>
-            <input type="text" class="inputItem"  name="idcard"  placeholder="请输入身份证">
+            <input type="text" class="inputItem idcard"  name="idcard"  placeholder="请输入身份证">
           </li>
 
           <li>
             <span class="name">邮政编码：</span>
-            <input type="text" class="inputItem"  name="zipcode"  placeholder="请输入身份证">
+            <input type="text" class="inputItem zipcode"  name="zipcode"  placeholder="请输入身份证">
           </li>
           <li>
             <span class="name">QQ：</span>
-            <input type="text" class="inputItem"  name="qq"  placeholder="请输入身份证">
+            <input type="text" class="inputItem qq"  name="qq"  placeholder="请输入身份证">
           </li>
           <li>
             <span class="name"></span>
             <div class="accept mt10">
               <input type="hidden" id="token"  name="token" value="281eda48-8239-4f8a-b719-b9547389476d" />
-              <input type="checkbox" class="acceptInput protocol" name="checkbox" value="1" >
+              <input type="checkbox" class="acceptInput protocol" required name="checkbox" value="1" >
               <em class="checked"></em>
               <div class="txt">接受<i id="accept" class="txtline blue hand">用户服务协议</i></div>
             </div>
@@ -97,87 +97,18 @@
        ignore:true,
        //errorLabelContainer:"#li", //错误提示信息放到body容器里
        rules: {
-         username: {
-           required: true,
-           username:true,
-           isExsitUserName:true
-         }
-         ,pwd1: {
-           required: true,
-           password:true
-         }
-         ,pwd2: {
-           required: true,
-           password:true,
+         pwd2: {
            equalTo:"#pwd1"
-         }
-         ,qq: {
-           required: false,
-           qq:true
-         }
-         ,"file": {
+         } ,file: {
            required: true
-         }
-         ,linkman: {
-           required: true,
-           linkman:true
-         }
-         ,idcard: {
-           required: true,
-           idcard:true
-         }
-
-         ,zipcode: {
-           zipcode:true
-         }
-         ,mobile: {
-           required:true,
-           mobile:true
-         }
-         ,email: {
-           required: true,
-           email:true
          }
        }
        ,messages: {
-         username: {
-           required: "请输入内容",
-           username:"请填写包含中文/字母/数字的1到50位字符",
-           isExsitUserName: "用户名已存在"
-         }
-         ,pwd1: {
-           required: "请输入内容",
-           password:"密码(6-16字母、数字、无空格)"
-         }
-         ,pwd2: {
-           required: "请输入内容",
-           password:"密码(6-16字母、数字、无空格)",
+         pwd2: {
            equalTo:"新密码与确认密码不一致"
          }
          ,file: {
            required: "请选择要上传的图片或视频"
-         }
-         ,linkman: {
-           required: "请输入内容",
-           email:"联系人格式不正确"
-         }
-         ,idcard: {
-           required: "请输入内容",
-           idcard:"身份证号码格式不正确"
-         }
-         ,qq: {
-           qq:"QQ号码格式不正确"
-         }
-         ,zipcode: {
-           zipcode:"邮政编码式不正确"
-         }
-         ,mobile: {
-           required: "请输入内容",
-           mobile:"联系电话格式不正确"
-         }
-         ,email: {
-           required: "请输入内容",
-           email:"邮箱格式不正确"
          }
        }
        ,submitHandler: function(form) {
