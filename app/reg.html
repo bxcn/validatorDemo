@@ -83,32 +83,25 @@
   <script type="text/javascript" src="js/lib/jquery.validate.js"></script>
   <script type="text/javascript" src="js/lib/additional-methods.js"></script>
   <script>
+
+  </script>
+
+  <script>
     var regFormUserInfo;
-
-
    $(function(){
-
-
-
-
      regFormUserInfo = $("#regFormUserInfo").validate({
-       errorClass: "error",
+/*       errorClass: "error",
        validClass:"success",
-       ignore:true,
+       ignore:true,*/
        //errorLabelContainer:"#li", //错误提示信息放到body容器里
        rules: {
          pwd2: {
            equalTo:"#pwd1"
-         } ,file: {
-           required: true
          }
        }
        ,messages: {
          pwd2: {
            equalTo:"新密码与确认密码不一致"
-         }
-         ,file: {
-           required: "请选择要上传的图片或视频"
          }
        }
        ,submitHandler: function(form) {

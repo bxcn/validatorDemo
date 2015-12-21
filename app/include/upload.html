@@ -4,7 +4,7 @@
     <ul>
       <li>
         <label for="file">选择上传文件：</label>
-        <input id="file" name="file" type="file" class=""  accept="image/*,audio/*">
+        <input id="file" name="file" type="file" class="upload accept" required accept="image/*,audio/*">
       </li>
       <li>
         <label></label>
@@ -17,17 +17,7 @@
 
 <script>
   $(".validate2").validate({
-    rules: {
-      "file": {
-        required: true
-      }
-    }
-    ,messages: {
-      file: {
-        required: "请选择要上传的图片或视频"
-      }
-    }
-    ,submitHandler: function(form) {
+    submitHandler: function(form) {
       alert("success");
     }
   });

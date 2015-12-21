@@ -4,9 +4,9 @@
     <ul>
       <li>
         <label>性别：</label>
-        <input class="minInput" name="sex" type="radio" value="1">
+        <input class="minInput" name="sex" type="radio" required value="1">
         <label class="note">男</label>
-        <input class="minInput" name="sex" type="radio" value="0">
+        <input class="minInput" name="sex" type="radio" required value="0">
         <label class="note">女</label>
       </li>
       <li>
@@ -20,19 +20,7 @@
 
 <script>
   $(".validate4").validate({
-    rules: {
-      "sex": {
-        required: true,
-        digits: true,
-      }
-    }
-    ,messages: {
-      sex: {
-        required: "性别不能为空",
-        digits: "性别不能为空"
-      }
-    }
-    ,submitHandler: function(form) {
+    submitHandler: function(form) {
       alert("success");
     }
   });

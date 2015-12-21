@@ -71,7 +71,7 @@
     // Either return true because we've validated each file, or because the
     // browser does not support element.files and the FileList feature
     return true;
-  }, $.validator.format("Please enter a value with a valid mimetype."));
+  }, $.validator.format("请选择一个有效的上传文件类型."));
 
   $.validator.addMethod("alphanumeric", function(value, element) {
     return this.optional(element) || /^\w+$/i.test(value);
@@ -999,11 +999,22 @@
     return this.optional(element) || /^90[2-5]\d\{2\}-\d{4}$/.test(value);
   }, "Your ZIP-code must be in the range 902xx-xxxx to 905xx-xxxx");
 
-
-  // 手机
-/*  mobile: function( value, element ) {
-    return   value == "" || this.optional( element ) || /^1(3|4|5|7|8)\d{9}$/.test( value );
-  },*/
+  //复写原来的required
+  $.validator.addMethod("required", function(value, element, param) {
+      // check if dependency is met
+      if ( !this.depend( param, element ) ) {
+        return "dependency-mismatch";
+      }
+      if ( element.nodeName.toLowerCase() === "select" ) {
+        // could be an array for select-multiple or a string, both are fine this way
+        var val = $( element ).val();
+        return val && val.length > 0;
+      }
+      if ( this.checkable( element ) ) {
+        return this.getLength( value, element ) > 0;
+      }
+      return value.length > 0;
+  }, "此项不能为空");
 
   $.validator.addMethod("username", function(value, element) {
 
@@ -1088,12 +1099,12 @@
   // 请输入中文
   $.validator.addMethod("chinese", function(value, element) {
     return  this.optional( element ) ||  /^[(\u0391-\uFFE5\s)]{0,}$/.test(value);
-  }, "中文格式不正确");
+  }, "请输入中文字符");
 
   // 请输入英文
   $.validator.addMethod("english", function(value, element) {
     return  this.optional( element ) ||  /^[(a-zA-Z0-9\s)]{0,}$/.test(value);
-  }, "英文格式不正确");
+  }, "请输入英文字符");
 
   // 固定电话
   $.validator.addMethod("telphone", function(value, element) {
@@ -1155,6 +1166,6 @@
     }
     return false;
 
-  }, "选择个数不正确");
+  }, "选择项的个数不对");
 
 }));

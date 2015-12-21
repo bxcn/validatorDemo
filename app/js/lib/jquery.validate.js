@@ -68,9 +68,9 @@
               if ( validator.submitButton ) {
                 // insert a hidden input as a replacement for the missing submit button
                 hidden = $( "<input type='hidden'/>" )
-                  .attr( "name", validator.submitButton.name )
-                  .val( $( validator.submitButton ).val() )
-                  .appendTo( validator.currentForm );
+                    .attr( "name", validator.submitButton.name )
+                    .val( $( validator.submitButton ).val() )
+                    .appendTo( validator.currentForm );
               }
               result = validator.settings.submitHandler.call( validator, validator.currentForm, event );
               if ( validator.submitButton ) {
@@ -115,7 +115,7 @@
         errorList = [];
         valid = true;
         validator = $( this[ 0 ].form ).validate();
-        this.each( function(i, data ) {
+        this.each( function() {
           valid = validator.element( this ) && valid;
           errorList = errorList.concat( validator.errorList );
         });
@@ -127,7 +127,7 @@
     // http://jqueryvalidation.org/rules/
     rules: function( command, argument ) {
       var element = this[ 0 ],
-        settings, staticRules, existingRules, data, param, filtered;
+          settings, staticRules, existingRules, data, param, filtered;
 
       if ( command ) {
         settings = $.data( element.form, "validator" ).settings;
@@ -161,13 +161,13 @@
       }
 
       data = $.validator.normalizeRules(
-        $.extend(
-          {},
-          $.validator.classRules( element ),
-          $.validator.attributeRules( element ),
-          $.validator.dataRules( element ),
-          $.validator.staticRules( element )
-        ), element );
+          $.extend(
+              {},
+              $.validator.classRules( element ),
+              $.validator.attributeRules( element ),
+              $.validator.dataRules( element ),
+              $.validator.staticRules( element )
+          ), element );
 
       // make sure required is at front
       if ( data.required ) {
@@ -242,7 +242,6 @@
       rules: {},
       errorClass: "error",
       validClass: "valid",
-      //errorElement: "label",
       errorElement: "div",
       errorMessageDirection: "bottom",
       focusCleanup: false,
@@ -326,9 +325,9 @@
     },
 
     messages: {
-      required: "请输入内容",
-      email: "邮箱格式不正确",
+      required: "This field is required.",
       remote: "Please fix this field.",
+      email: "Please enter a valid email address.",
       url: "Please enter a valid URL.",
       date: "Please enter a valid date.",
       dateISO: "Please enter a valid date ( ISO ).",
@@ -360,7 +359,7 @@
         this.reset();
 
         var groups = ( this.groups = {} ),
-          rules;
+            rules;
         $.each( this.settings.groups, function( key, value ) {
           if ( typeof value === "string" ) {
             value = value.split( /\s/ );
@@ -376,22 +375,22 @@
 
         function delegate( event ) {
           var validator = $.data( this.form, "validator" ),
-            eventType = "on" + event.type.replace( /^validate/, "" ),
-            settings = validator.settings;
+              eventType = "on" + event.type.replace( /^validate/, "" ),
+              settings = validator.settings;
           if ( settings[ eventType ] && !$( this ).is( settings.ignore ) ) {
             settings[ eventType ].call( validator, this, event );
           }
         }
 
         $( this.currentForm )
-          .on( "focusin.validate focusout.validate keyup.validate",
-            ":text, [type='password'], [type='file'], select, textarea, [type='number'], [type='search'], " +
-            "[type='tel'], [type='url'], [type='email'], [type='datetime'], [type='date'], [type='month'], " +
-            "[type='week'], [type='time'], [type='datetime-local'], [type='range'], [type='color'], " +
-            "[type='radio'], [type='checkbox']", delegate)
-          // Support: Chrome, oldIE
-          // "select" is provided as event.target when clicking a option
-          .on("click.validate", "select, option, [type='radio'], [type='checkbox']", delegate);
+            .on( "focusin.validate focusout.validate keyup.validate",
+                ":text, [type='password'], [type='file'], select, textarea, [type='number'], [type='search'], " +
+                "[type='tel'], [type='url'], [type='email'], [type='datetime'], [type='date'], [type='month'], " +
+                "[type='week'], [type='time'], [type='datetime-local'], [type='range'], [type='color'], " +
+                "[type='radio'], [type='checkbox']", delegate)
+            // Support: Chrome, oldIE
+            // "select" is provided as event.target when clicking a option
+            .on("click.validate", "select, option, [type='radio'], [type='checkbox']", delegate);
 
         if ( this.settings.invalidHandler ) {
           $( this.currentForm ).on( "invalid-form.validate", this.settings.invalidHandler );
@@ -416,25 +415,17 @@
 
       checkForm: function() {
         this.prepareForm();
-
-     /*  原来的
         for ( var i = 0, elements = ( this.currentElements = this.elements() ); elements[ i ]; i++ ) {
           this.check( elements[ i ] );
         }
-        */
-
-        for ( var i = 0, elements = ( this.currentElements = this.elements() ); elements[ i ]; i++ ) {
-          this.check( elements[ i ] );
-        }
-
         return this.valid();
       },
 
       // http://jqueryvalidation.org/Validator.element/
       element: function( element ) {
         var cleanElement = this.clean( element ),
-          checkElement = this.validationTargetFor( cleanElement ),
-          result = true;
+            checkElement = this.validationTargetFor( cleanElement ),
+            result = true;
 
         this.lastElement = checkElement;
 
@@ -499,13 +490,13 @@
         this.prepareForm();
         this.hideErrors();
         var i, elements = this.elements()
-          .removeData( "previousValue" )
-          .removeAttr( "aria-invalid" );
+            .removeData( "previousValue" )
+            .removeAttr( "aria-invalid" );
 
         if ( this.settings.unhighlight ) {
           for ( i = 0; elements[ i ]; i++ ) {
             this.settings.unhighlight.call( this, elements[ i ],
-              this.settings.errorClass, "" );
+                this.settings.errorClass, "" );
           }
         } else {
           elements.removeClass( this.settings.errorClass );
@@ -519,7 +510,7 @@
       objectLength: function( obj ) {
         /* jshint unused: false */
         var count = 0,
-          i;
+            i;
         for ( i in obj ) {
           count++;
         }
@@ -548,10 +539,10 @@
         if ( this.settings.focusInvalid ) {
           try {
             $( this.findLastActive() || this.errorList.length && this.errorList[ 0 ].element || [])
-              .filter( ":visible" )
-              .focus()
-              // manually trigger focusin event; without it, focusin handler isn't called, findLastActive won't have anything to find
-              .trigger( "focusin" );
+                .filter( ":visible" )
+                .focus()
+                // manually trigger focusin event; without it, focusin handler isn't called, findLastActive won't have anything to find
+                .trigger( "focusin" );
           } catch ( e ) {
             // ignore IE throwing errors when focusing hidden elements
           }
@@ -561,32 +552,32 @@
       findLastActive: function() {
         var lastActive = this.lastActive;
         return lastActive && $.grep( this.errorList, function( n ) {
-            return n.element.name === lastActive.name;
-          }).length === 1 && lastActive;
+              return n.element.name === lastActive.name;
+            }).length === 1 && lastActive;
       },
 
       elements: function() {
         var validator = this,
-          rulesCache = {};
+            rulesCache = {};
 
         // select all valid inputs inside the form (no submit or reset buttons)
         return $( this.currentForm )
-          .find( "input, select, textarea" )
-          .not( ":submit, :reset, :image, :disabled" )
-          .not( this.settings.ignore )
-          .filter( function() {
-            if ( !this.name && validator.settings.debug && window.console ) {
-              console.error( "%o has no name assigned", this );
-            }
+            .find( "input, select, textarea" )
+            .not( ":submit, :reset, :image, :disabled" )
+            .not( this.settings.ignore )
+            .filter( function() {
+              if ( !this.name && validator.settings.debug && window.console ) {
+                console.error( "%o has no name assigned", this );
+              }
 
-            // select only the first element for each name, and only those with rules specified
-            if ( this.name in rulesCache || !validator.objectLength( $( this ).rules() ) ) {
-              return false;
-            }
+              // select only the first element for each name, and only those with rules specified
+              if ( this.name in rulesCache || !validator.objectLength( $( this ).rules() ) ) {
+                return false;
+              }
 
-            rulesCache[ this.name ] = true;
-            return true;
-          });
+              rulesCache[ this.name ] = true;
+              return true;
+            });
       },
 
       clean: function( selector ) {
@@ -619,8 +610,8 @@
 
       elementValue: function( element ) {
         var val,
-          $element = $( element ),
-          type = element.type;
+            $element = $( element ),
+            type = element.type;
 
         if ( type === "radio" || type === "checkbox" ) {
           return this.findByName( element.name ).filter(":checked").val();
@@ -639,19 +630,16 @@
         element = this.validationTargetFor( this.clean( element ) );
 
         var rules = $( element ).rules(),
-          rulesCount = $.map( rules, function( n, i ) {
-            return i;
-          }).length,
-          dependencyMismatch = false,
-          val = this.elementValue( element ),
-          result, method, rule;
+            rulesCount = $.map( rules, function( n, i ) {
+              return i;
+            }).length,
+            dependencyMismatch = false,
+            val = this.elementValue( element ),
+            result, method, rule;
 
         for ( method in rules ) {
-
           rule = { method: method, parameters: rules[ method ] };
           try {
-
-
 
             result = $.validator.methods[ method ].call( this, val, element, rule.parameters );
 
@@ -669,7 +657,6 @@
             }
 
             if ( !result ) {
-              // 把验证失败的元素和规则保存到formatAndAdd
               this.formatAndAdd( element, rule );
               return false;
             }
@@ -683,8 +670,6 @@
 
             throw e;
           }
-
-
         }
         if ( dependencyMismatch ) {
           return;
@@ -700,7 +685,7 @@
       // return the generic message if present and no method specific message is present
       customDataMessage: function( element, method ) {
         return $( element ).data( "msg" + method.charAt( 0 ).toUpperCase() +
-            method.substring( 1 ).toLowerCase() ) || $( element ).data( "msg" );
+                method.substring( 1 ).toLowerCase() ) || $( element ).data( "msg" );
       },
 
       // return the custom message for the given element name and validation method
@@ -720,20 +705,19 @@
       },
 
       defaultMessage: function( element, method ) {
-
         return this.findDefined(
-          this.customMessage( element.name, method ),
-          this.customDataMessage( element, method ),
-          // title is never undefined, so handle empty string as undefined
-          !this.settings.ignoreTitle && element.title || undefined,
-          $.validator.messages[ method ],
-          "<strong>Warning: No message defined for " + element.name + "</strong>"
+            this.customMessage( element.name, method ),
+            this.customDataMessage( element, method ),
+            // title is never undefined, so handle empty string as undefined
+            !this.settings.ignoreTitle && element.title || undefined,
+            $.validator.messages[ method ],
+            "<strong>Warning: No message defined for " + element.name + "</strong>"
         );
       },
 
       formatAndAdd: function( element, rule ) {
         var message = this.defaultMessage( element, rule.method ),
-          theregex = /\$?\{(\d+)\}/g;
+            theregex = /\$?\{(\d+)\}/g;
         if ( typeof message === "function" ) {
           message = message.call( this, rule.parameters, element );
         } else if ( theregex.test( message ) ) {
@@ -763,7 +747,6 @@
       defaultShowErrors: function() {
         var i, elements, error;
         for ( i = 0; this.errorList[ i ]; i++ ) {
-
           error = this.errorList[ i ];
           if ( this.settings.highlight ) {
             this.settings.highlight.call( this, error.element, this.settings.errorClass, this.settings.validClass );
@@ -819,9 +802,6 @@
             .addClass( "jquery-validater-error-" + this.settings.errorMessageDirection )
             .html( message || "" );
 
-
-         // $("#"+ elementID + "-error").remove();
-
           // Maintain reference to the element to be placed into the DOM
           place = error;
           if ( this.settings.wrapper ) {
@@ -844,6 +824,7 @@
           } else if ( error.parents( "label[for='" + elementID + "']" ).length === 0 ) {
             // If the element is not a child of an associated label, then it's necessary
             // to explicitly apply aria-describedby
+
             errorID = error.attr( "id" ).replace( /(:|\.|\[|\]|\$)/g, "\\$1");
             // Respect existing non-error aria-describedby
             if ( !describedBy ) {
@@ -860,7 +841,7 @@
               $.each( this.groups, function( name, testgroup ) {
                 if ( testgroup === group ) {
                   $( "[name='" + name + "']", this.currentForm )
-                    .attr( "aria-describedby", error.attr( "id" ) );
+                      .attr( "aria-describedby", error.attr( "id" ) );
                 }
               });
             }
@@ -891,17 +872,16 @@
 
       errorsFor: function( element ) {
         var name = this.idOrName( element ),
-          describer = $( element ).attr( "aria-describedby" ),
-          selector = "label[for='" + name + "'], label[for='" + name + "'] *";
+            describer = $( element ).attr( "aria-describedby" ),
+            selector = "label[for='" + name + "'], label[for='" + name + "'] *";
 
         // aria-describedby should directly reference the error element
         if ( describer ) {
           selector = selector + ", #" + describer.replace( /\s+/g, ", #" );
         }
-
         return this
-          .errors()
-          .filter( selector );
+            .errors()
+            .filter( selector );
       },
 
       idOrName: function( element ) {
@@ -985,10 +965,10 @@
 
       previousValue: function( element ) {
         return $.data( element, "previousValue" ) || $.data( element, "previousValue", {
-            old: null,
-            valid: true,
-            message: this.defaultMessage( element, "remote" )
-          });
+              old: null,
+              valid: true,
+              message: this.defaultMessage( element, "remote" )
+            });
       },
 
       // cleans up all forms and elements, removes validator-specific events
@@ -996,14 +976,15 @@
         this.resetForm();
 
         $( this.currentForm )
-          .off( ".validate" )
-          .removeData( "validator" );
+            .off( ".validate" )
+            .removeData( "validator" );
       }
 
     },
 
     classRuleSettings: {
       required: { required: true },
+      email: { email: true },
       url: { url: true },
       date: { date: true },
       dateISO: { dateISO: true },
@@ -1022,7 +1003,7 @@
 
     classRules: function( element ) {
       var rules = {},
-        classes = $( element ).attr( "class" );
+          classes = $( element ).attr( "class" );
 
       if ( classes ) {
         $.each( classes.split( " " ), function() {
@@ -1059,9 +1040,9 @@
 
     attributeRules: function( element ) {
       var rules = {},
-        $element = $( element ),
-        type = element.getAttribute( "type" ),
-        method, value;
+          $element = $( element ),
+          type = element.getAttribute( "type" ),
+          method, value;
 
       for ( method in $.validator.methods ) {
 
@@ -1094,9 +1075,9 @@
 
     dataRules: function( element ) {
       var rules = {},
-        $element = $( element ),
-        type = element.getAttribute( "type" ),
-        method, value;
+          $element = $( element ),
+          type = element.getAttribute( "type" ),
+          method, value;
 
       for ( method in $.validator.methods ) {
         value = $element.data( "rule" + method.charAt( 0 ).toUpperCase() + method.substring( 1 ).toLowerCase() );
@@ -1107,7 +1088,7 @@
 
     staticRules: function( element ) {
       var rules = {},
-        validator = $.data( element.form, "validator" );
+          validator = $.data( element.form, "validator" );
 
       if ( validator.settings.rules ) {
         rules = $.validator.normalizeRule( validator.settings.rules[ element.name ] ) || {};
@@ -1221,18 +1202,13 @@
         return value.length > 0;
       },
 
-      // 小于
-      checkedLen: function( value, element, param ) {
-
-      },
-
       // http://jqueryvalidation.org/email-method/
       email: function( value, element ) {
         // From https://html.spec.whatwg.org/multipage/forms.html#valid-e-mail-address
         // Retrieved 2014-01-14
         // If you have a problem with this implementation, report a bug against the above spec
         // Or use custom methods to implement your own email validation
-        return  /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test( value );
+        return this.optional( element ) || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test( value );
       },
 
       // http://jqueryvalidation.org/url-method/
@@ -1276,9 +1252,9 @@
           return false;
         }
         var nCheck = 0,
-          nDigit = 0,
-          bEven = false,
-          n, cDigit;
+            nDigit = 0,
+            bEven = false,
+            n, cDigit;
 
         value = value.replace( /\D/g, "" );
 
@@ -1356,7 +1332,7 @@
         }
 
         var previous = this.previousValue( element ),
-          validator, data;
+            validator, data;
 
         if (!this.settings.messages[ element.name ] ) {
           this.settings.messages[ element.name ] = {};
@@ -1383,7 +1359,7 @@
           context: validator.currentForm,
           success: function( response ) {
             var valid = response === true || response === "true",
-              errors, message, submitted;
+                errors, message, submitted;
 
             validator.settings.messages[ element.name ].remote = previous.originalMessage;
             if ( valid ) {
@@ -1415,7 +1391,7 @@
 // if mode:"abort" is used, the previous request on that port (port can be undefined) is aborted via XMLHttpRequest.abort()
 
   var pendingRequests = {},
-    ajax;
+      ajax;
 // Use a prefilter if available (1.5+)
   if ( $.ajaxPrefilter ) {
     $.ajaxPrefilter(function( settings, _, xhr ) {
@@ -1432,7 +1408,7 @@
     ajax = $.ajax;
     $.ajax = function( settings ) {
       var mode = ( "mode" in settings ? settings : $.ajaxSettings ).mode,
-        port = ( "port" in settings ? settings : $.ajaxSettings ).port;
+          port = ( "port" in settings ? settings : $.ajaxSettings ).port;
       if ( mode === "abort" ) {
         if ( pendingRequests[port] ) {
           pendingRequests[port].abort();
