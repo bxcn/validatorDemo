@@ -1154,8 +1154,6 @@
     // 参数不是数组
     if ( param == true ) return true;
 
-    param = $.parseJSON(param);
-
     var min = param[0];
     var max = param[1];
     var checkName = $(element).attr("name");
@@ -1166,6 +1164,6 @@
     }
     return false;
 
-  }, "选择项的个数不对");
+  }, "请选择在{0}到{1}个选项");
 
 }));
