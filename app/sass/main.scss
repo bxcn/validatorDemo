@@ -2,100 +2,100 @@
 @import "common";
 
 .w1000 {
-  width:800px;
-  height:auto;
-  overflow:hidden;
-  margin-left:auto;
-  margin-right:auto;
+  width: 800px;
+  height: auto;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 h1 {
-  width:800px;
-  height:40px;
-  overflow:hidden;
-  margin-left:auto;
-  margin-right:auto;
-  margin-top:20px;
-  font-size:20px;
+  width: 800px;
+  height: 40px;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  font-size: 20px;
   line-height: 40px;
-  font-weight:bold;
-  background-color:#f60;
-  border-radius:3px;
-  color:#fff;
-  text-indent:10px;
+  font-weight: bold;
+  background-color: #f60;
+  border-radius: 3px;
+  color: #fff;
+  text-indent: 10px;
 }
+
 ul {
-  float:left;
-  width:100%;
-  height:auto;
-  padding:20px 0;
-  border:1px solid #e5e5e5;
-  border-top:none;
-  box-sizing:border-box;
+  float: left;
+  width: 100%;
+  height: auto;
+  padding: 20px 0;
+  border: 1px solid #e5e5e5;
+  border-top: none;
+  box-sizing: border-box;
   li {
-    float:left;
-    width:100%;
-    height:auto;
-    margin-top:20px;
-    overflow:hidden;
+    float: left;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    overflow: hidden;
 
     label {
-      float:left;
-      width:140px;
-      height:30px;
-      line-height:30px;
-      font-size:16px;
-      text-align:right;
+      float: left;
+      width: 140px;
+      height: 30px;
+      line-height: 30px;
+      font-size: 16px;
+      text-align: right;
 
       &.note {
-        width:auto;
-        height:30px;
+        width: auto;
+        height: 30px;
         line-height: 30px;
-        padding:0 10px;
-        text-align:center;
+        padding: 0 10px;
+        text-align: center;
       }
     }
 
-    input,textarea, select {
-      float:left;
-      width:260px;
-      height:30px;
-      margin-left:10px;
-      padding-left:10px;
-      border:1px solid #e5e5e5;
-      box-sizing:border-box;
+    input, textarea, select {
+      float: left;
+      width: 260px;
+      height: 30px;
+      margin-left: 10px;
+      padding-left: 10px;
+      border: 1px solid #e5e5e5;
+      box-sizing: border-box;
 
       &.minInput {
-        width:80px;
+        width: 80px;
       }
-
-
 
     }
     input[type='checkbox'],
     input[type='radio'] {
-      float:left;
-      width:20px;
-      height:20px;
-      margin-left:10px;
-      padding-left:10px;
-      margin-top:8px;
-      border:1px solid #e5e5e5;
-      box-sizing:border-box;
+      float: left;
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+      padding-left: 10px;
+      margin-top: 8px;
+      border: 1px solid #e5e5e5;
+      box-sizing: border-box;
     }
     textarea {
-      height:60px;
-      resize:none;
+      height: 60px;
+      resize: none;
     }
 
     button {
-      float:left;
-      width:160px;
-      height:40px;
-      margin-left:10px;
-      border:none;
-      border-radius:5px;
-      background-color:#f60;
-      color:#fff;
+      float: left;
+      width: 160px;
+      height: 40px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #f60;
+      color: #fff;
     }
   }
 }

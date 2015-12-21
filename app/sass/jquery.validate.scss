@@ -1,13 +1,13 @@
 // 样式向下
 .jquery-validater-error-bottom {
-  display:none;
+  display: none;
   position: absolute;
   z-index: 1;
-  line-height:0;
+  line-height: 0;
   .error-msg {
     position: absolute;
-    display:inline-block;;
-    line-height:1.5;
+    display: inline-block;;
+    line-height: 1.5;
     padding: 4px 6px;
     font-size: 12px;
     color: #db7c22;
@@ -20,46 +20,46 @@
 
   .error-icon {
     position: absolute;
-    left:5px;
-    top:-8px;
-    width:12px;
-    height:8px;
-    overflow:hidden;
+    left: 5px;
+    top: -8px;
+    width: 12px;
+    height: 8px;
+    overflow: hidden;
   }
 
   .error-msg i,
-  .error-msg b{
+  .error-msg b {
     position: absolute;
-    left:0;
-    top:-0px;
-    width:12px;
-    height:12px;
-    overflow:hidden;
-    font-family:serif;
+    left: 0;
+    top: -0px;
+    width: 12px;
+    height: 12px;
+    overflow: hidden;
+    font-family: serif;
     font-weight: 400;
     font-style: normal;
     color: #fffcef;
   }
   .error-msg b {
-    top:-1.5px;
-    color:#ffbb76;
+    top: -1.5px;
+    color: #ffbb76;
   }
   .error-txt {
-    font-size:12px;
+    font-size: 12px;
   }
 
 }
 
 // 样式向上
 .jquery-validater-error-top {
-  display:none;
+  display: none;
   position: absolute;
   z-index: 1;
-  line-height:0;
+  line-height: 0;
   .error-msg {
     position: absolute;
-    display:inline-block;;
-    line-height:1.5;
+    display: inline-block;;
+    line-height: 1.5;
     padding: 4px 6px;
     font-size: 12px;
     color: #db7c22;
@@ -72,46 +72,46 @@
 
   .error-icon {
     position: absolute;
-    left:5px;
-    bottom:-8px;
-    width:12px;
-    height:8px;
-    overflow:hidden;
+    left: 5px;
+    bottom: -8px;
+    width: 12px;
+    height: 8px;
+    overflow: hidden;
   }
 
   .error-msg i,
-  .error-msg b{
+  .error-msg b {
     position: absolute;
-    left:0;
-    top:-9px;
-    width:14px;
-    height:14px;
-    overflow:hidden;
-    font-family:serif;
+    left: 0;
+    top: -9px;
+    width: 14px;
+    height: 14px;
+    overflow: hidden;
+    font-family: serif;
     font-weight: 400;
     font-style: normal;
     color: #fffcef;
   }
   .error-msg b {
-    top:-8px;
-    color:#ffbb76;
+    top: -8px;
+    color: #ffbb76;
   }
   .error-txt {
-    font-size:12px;
+    font-size: 12px;
   }
 
 }
 
 // 样式向右
 .jquery-validater-error-right {
-  display:none;
+  display: none;
   position: absolute;
   z-index: 1;
-  line-height:0;
+  line-height: 0;
   .error-msg {
     position: absolute;
-    display:inline-block;;
-    line-height:1.5;
+    display: inline-block;;
+    line-height: 1.5;
     padding: 4px 6px;
     font-size: 12px;
     color: #db7c22;
@@ -124,46 +124,46 @@
 
   .error-icon {
     position: absolute;
-    left:-6px;
-    top:4px;
-    width:8px;
-    height:14px;
-    overflow:hidden;
+    left: -6px;
+    top: 4px;
+    width: 8px;
+    height: 14px;
+    overflow: hidden;
   }
 
   .error-msg i,
-  .error-msg b{
+  .error-msg b {
     position: absolute;
-    left:1px;
-    top:0;
-    width:8px;
-    height:14px;
-    overflow:hidden;
-    font-family:serif;
+    left: 1px;
+    top: 0;
+    width: 8px;
+    height: 14px;
+    overflow: hidden;
+    font-family: serif;
     font-weight: 400;
     font-style: normal;
     color: #fffcef;
   }
   .error-msg b {
-    left:0;
-    color:#ffbb76;
+    left: 0;
+    color: #ffbb76;
   }
   .error-txt {
-    font-size:12px;
+    font-size: 12px;
   }
 
 }
 
 // 样式向上
 .jquery-validater-error-left {
-  display:none;
+  display: none;
   position: absolute;
   z-index: 1;
-  line-height:0;
+  line-height: 0;
   .error-msg {
     position: absolute;
-    display:inline-block;;
-    line-height:1.5;
+    display: inline-block;;
+    line-height: 1.5;
     padding: 4px 6px;
     font-size: 12px;
     color: #db7c22;
@@ -176,39 +176,37 @@
 
   .error-icon {
     position: absolute;
-    right:-8px;
-    top:4px;
-    width:10px;
-    height:14px;
-    overflow:hidden;
+    right: -8px;
+    top: 4px;
+    width: 10px;
+    height: 14px;
+    overflow: hidden;
   }
 
   .error-msg i,
-  .error-msg b{
+  .error-msg b {
     position: absolute;
-    left:-3px;
-    top:0;
-    width:14px;
-    height:14px;
-    overflow:hidden;
-    font-family:serif;
+    left: -3px;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    overflow: hidden;
+    font-family: serif;
     font-weight: 400;
     font-style: normal;
     color: #fffcef;
   }
   .error-msg b {
-    left:-2px;
-    color:#ffbb76;
+    left: -2px;
+    color: #ffbb76;
   }
   .error-txt {
-    font-size:12px;
+    font-size: 12px;
   }
 
 }
 
-
-
 .error {
-  color:red;
+  color: red;
 }
 
