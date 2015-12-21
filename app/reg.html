@@ -2,12 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>validatorDome</title>
+    <title>注册页面</title>
     <link rel="stylesheet" href="css/reg.css">
     <link rel="stylesheet" href="css/jquery.validate.css">
   </head>
   <body>
-
   <div class="main">
     <form id="regFormUserInfo">
       <div class="register">
@@ -73,19 +72,13 @@
             <span class="name"></span>
             <input class="submit" type="submit" value="免费注册">
           </li>
-
         </ul>
       </div>
     </form>
   </div>
-
-  <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+  <script type="text/javascript" src="js/min/jquery.min.js"></script>
   <script type="text/javascript" src="js/lib/jquery.validate.js"></script>
   <script type="text/javascript" src="js/lib/additional-methods.js"></script>
-  <script>
-
-  </script>
-
   <script>
     var regFormUserInfo;
    $(function(){
@@ -108,22 +101,10 @@
          alert("success");
        }
      });
-
-
      $(window).resize(function(){
        regFormUserInfo.resetForm();
      });
-
-
    });
-
-
   </script>
-
-
   </body>
-
-  <script>
-
-  </script>
 </html>

@@ -7,11 +7,11 @@ const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 gulp.task('uglify',  () => {
-  return gulp.src(['app/js/**/*.js'])
-    .pipe(gulp.dest('./dist/js'))
+  return gulp.src(['app/js/lib/*.js'])
+    .pipe(gulp.dest('./dist/js/lib/'))
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.js', $.rename({extname: ".min.js"})))
-    .pipe(gulp.dest('./dist/js/'))
+    .pipe(gulp.dest('./dist/js/min/'))
     .pipe(reload({stream: true}));
 });
 
@@ -27,7 +27,7 @@ gulp.task('sass',  () => {
 });
 
 gulp.task('html', () => {
-  return gulp.src(['app/*.html',  '!app/html/test/**/*.html'])
+  return gulp.src(['app/**/*.html','!app/include/*.html'])
     .pipe($.if('*.html', $.ejs({},{ext: '.html'})))
     .pipe(gulp.dest('./dist/'))
     .pipe(reload({stream: true}));

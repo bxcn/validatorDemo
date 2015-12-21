@@ -1,27 +1,39 @@
-<h1>邮箱验证</h1>
+<h1>用户注册</h1>
 <div class="w1000">
   <form class="validate9" method="get" action="">
     <ul>
       <li>
+        <label >用户名：</label>
+        <input  name="username" type="text" class="username isExsitUserName" required autocomplete="off">
+      </li>
+      <li>
+        <label>密码：</label>
+        <input name="password" type="text" class="password" value="" autocomplete="off" required />
+      </li>
+      <li>
         <label>请输入中文：</label>
-        <input name="chinese" type="text" class="chinese" value="" required>
+        <input name="chinese" type="text" class="chinese" value="" >
       </li>
       <li>
         <label>请输入英文：</label>
-        <input name="english" type="text" class="english" value="" required>
+        <input name="english" type="text" class="english" value="" >
       </li>
       <li>
         <label>性别：</label>
-        <input name="sex" type="radio" class="sex" value="0" required> 女
-        <input name="sex" type="radio" class="sex" value="1" required> 男
+        <input name="sex" type="radio" class="sex" value="0" required><label for=" 女"> 女</label>
+        <input name="sex" type="radio" class="sex" value="1" required><label for="男">男</label>
       </li>
       <li>
         <label>用户服务协议：</label>
-        <input name="protocol" type="checkbox" class="protocol" value="0" required>
+        <input name="protocol" type="checkbox" class="protocol" value="0">
       </li>
       <li>
         <label>联系人：</label>
         <input name="zipcode" type="text" class="linkman">
+      </li>
+      <li>
+        <label>网址：</label>
+        <input name="url" type="text" class="url">
       </li>
       <li>
         <label>联系人：</label>
@@ -29,11 +41,11 @@
       </li>
       <li>
         <label>身份证：</label>
-        <input name="idcard" type="text" class="idcard" required>
+        <input name="idcard" type="text" class="idcard">
       </li>
       <li>
         <label>邮编：</label>
-        <input name="zipcode" type="text" class="zipcode" required>
+        <input name="zipcode" type="text" class="zipcode">
       </li>
       <li>
         <label>QQ：</label>

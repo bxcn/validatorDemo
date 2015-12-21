@@ -999,23 +999,6 @@
     return this.optional(element) || /^90[2-5]\d\{2\}-\d{4}$/.test(value);
   }, "Your ZIP-code must be in the range 902xx-xxxx to 905xx-xxxx");
 
-  //复写原来的required
-  $.validator.addMethod("required", function(value, element, param) {
-      // check if dependency is met
-      if ( !this.depend( param, element ) ) {
-        return "dependency-mismatch";
-      }
-      if ( element.nodeName.toLowerCase() === "select" ) {
-        // could be an array for select-multiple or a string, both are fine this way
-        var val = $( element ).val();
-        return val && val.length > 0;
-      }
-      if ( this.checkable( element ) ) {
-        return this.getLength( value, element ) > 0;
-      }
-      return value.length > 0;
-  }, "此项不能为空");
-
   $.validator.addMethod("username", function(value, element) {
 
     var regexRet = true;
@@ -1098,12 +1081,12 @@
 
   // 请输入中文
   $.validator.addMethod("chinese", function(value, element) {
-    return  this.optional( element ) ||  /^[(\u0391-\uFFE5\s)]{0,}$/.test(value);
+    return  this.optional( element ) ||  /^[(\u0391-\uFFE5\s)]{1,}$/.test(value);
   }, "请输入中文字符");
 
   // 请输入英文
   $.validator.addMethod("english", function(value, element) {
-    return  this.optional( element ) ||  /^[(a-zA-Z0-9\s)]{0,}$/.test(value);
+    return  this.optional( element ) ||  /^[(a-zA-Z0-9\s)]{1,}$/.test(value);
   }, "请输入英文字符");
 
   // 固定电话
