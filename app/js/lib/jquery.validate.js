@@ -261,11 +261,15 @@
           }
           this.hideThese( this.errorsFor( element ) );
         }
+        // 当获取焦点
+        $("#"+ element.name +"-error").show();
       },
       onfocusout: function( element ) {
         if ( !this.checkable( element ) && ( element.name in this.submitted || !this.optional( element ) ) ) {
           this.element( element );
         }
+        // 失去焦点
+        $("#"+ element.name +"-error").hide();
       },
       onkeyup: function( element, event ) {
         // Avoid revalidate the field when pressing one of the following keys
@@ -292,6 +296,9 @@
         } else if ( element.name in this.submitted || element === this.lastElement ) {
           this.element( element );
         }
+
+        // 当键盘抬起时去验证
+        this.element( element );
       },
       onclick: function( element ) {
         // click on selects, radiobuttons and checkboxes
