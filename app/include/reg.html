@@ -1,59 +1,18 @@
-<h1>用户注册</h1>
 <div class="w1000">
+  <h1>中文、英文验证</h1>
   <form class="validate9" method="get" action="">
     <ul>
       <li>
-        <label >用户名：</label>
-        <input  name="username" type="text" class="username isExsitUserName" required autocomplete="off">
-      </li>
-      <li>
-        <label>密码：</label>
-        <input name="password" type="text" class="password" value="" autocomplete="off" required />
-      </li>
-      <li>
         <label>请输入中文：</label>
-        <input name="chinese" type="text" class="chinese" value="" >
+        <input name="chinese" type="text" class="chinese" value=""  required autocomplete="off">
       </li>
       <li>
         <label>请输入英文：</label>
         <input name="english" type="text" class="english" value="" >
       </li>
       <li>
-        <label>性别：</label>
-        <input name="sex" type="radio" class="sex" value="0" required><label for=" 女"> 女</label>
-        <input name="sex" type="radio" class="sex" value="1" required><label for="男">男</label>
-      </li>
-      <li>
         <label>用户服务协议：</label>
-        <input name="protocol" type="checkbox" class="protocol" value="0">
-      </li>
-      <li>
-        <label>联系人：</label>
-        <input name="zipcode" type="text" class="linkman">
-      </li>
-      <li>
-        <label>网址：</label>
-        <input name="url" type="text" class="url">
-      </li>
-      <li>
-        <label>联系人：</label>
-        <input name="zipcode" type="text" class="linkman">
-      </li>
-      <li>
-        <label>身份证：</label>
-        <input name="idcard" type="text" class="idcard">
-      </li>
-      <li>
-        <label>邮编：</label>
-        <input name="zipcode" type="text" class="zipcode">
-      </li>
-      <li>
-        <label>QQ：</label>
-        <input name="qq" type="text" class="qq" >
-      </li>
-      <li>
-        <label>公司邮箱：</label>
-        <input name="email" type="email" class="email">
+        <input name="protocol" type="checkbox" class="protocol" value="0"  required><label for="用户服务协议">用户服务协议</label>
       </li>
       <li>
         <label></label>
@@ -66,6 +25,68 @@
 
 <script>
   $(".validate9").validate({
+    submitHandler: function(form) {
+      alert("success");
+    }
+  });
+</script>
+<div class="w1000">
+  <h1>联系人、网址、身份证</h1>
+  <form class="validate91" method="get" action="">
+    <ul>
+      <li>
+        <label>联系人：</label>
+        <input name="zipcode" type="text" class="linkman">
+      </li>
+      <li>
+        <label>网址：</label>
+        <input name="url" type="text" class="url">
+      </li>
+      <li>
+        <label>身份证：</label>
+        <input name="idcard" type="text" class="idcard"  required autocomplete="off">
+      </li>   <li>
+      <label></label>
+      <button class="submit" type="submit">确定</button>
+    </li>
+    </ul>
+  </form>
+
+</div>
+
+<script>
+  $(".validate91").validate({
+    submitHandler: function(form) {
+      alert("success");
+    }
+  });
+</script>
+<div class="w1000">
+  <h1>邮编、QQ、邮箱</h1>
+  <form class="validate92" method="get" action="">
+    <ul>
+      <li>
+        <label>邮编：</label>
+        <input name="zipcode" type="text" class="zipcode">
+      </li>
+      <li>
+        <label>QQ：</label>
+        <input name="qq" type="text" class="qq" >
+      </li>
+      <li>
+        <label>公司邮箱：</label>
+        <input name="email" type="email" class="email"  required autocomplete="off">
+      </li>
+      <li>
+        <label></label>
+        <button class="submit" type="submit">确定</button>
+      </li>
+    </ul>
+  </form>
+</div>
+
+<script>
+  $(".validate92").validate({
     submitHandler: function(form) {
       alert("success");
     }

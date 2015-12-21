@@ -2,20 +2,19 @@
 @import "common";
 
 .w1000 {
-  width: 800px;
-  height: auto;
+  float:left;
+  width: 360px;
+  max-height: 310px;
+  margin:10px;
   overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 h1 {
-  width: 800px;
+  width: 360px;
   height: 40px;
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
   font-size: 20px;
   line-height: 40px;
   font-weight: bold;
@@ -28,21 +27,21 @@ h1 {
 ul {
   float: left;
   width: 100%;
-  height: auto;
-  padding: 20px 0;
+  min-height: 240px;
   border: 1px solid #e5e5e5;
   border-top: none;
   box-sizing: border-box;
+  overflow:hidden;
   li {
     float: left;
-    width: 100%;
+    width: 360px;
     height: auto;
     margin-top: 20px;
     overflow: hidden;
 
     label {
       float: left;
-      width: 140px;
+      width: 130px;
       height: 30px;
       line-height: 30px;
       font-size: 16px;
@@ -59,7 +58,7 @@ ul {
 
     input, textarea, select {
       float: left;
-      width: 260px;
+      width: 160px;
       height: 30px;
       margin-left: 10px;
       padding-left: 10px;
