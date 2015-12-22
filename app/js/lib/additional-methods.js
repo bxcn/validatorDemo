@@ -1022,24 +1022,56 @@
 
   }, "请填写包含中文/字母/数字的1到50位字符");
 
-  $.validator.addMethod("isExsitUserName", function(value, element) {
-    var username = $.trim($(element).val());
-    var ret = true;
+  function existMethod( url, data ) {
+    //  jquery validation true:验证通过 false:验证失败
+    var retVal = true;
+    $.ajax({
+      url: "json/isExsitUserName.json",
+      type:"get",
+      async:false,
+      data: data,
+      dataType: "json",
+      success: function (json) {
+        retVal = json.success;
+      }
+    });
+    return retVal;
+  }
 
+  /**
+   * 验证用户名是否存在 true 是不存在，false是存在
+   */
+  $.validator.addMethod("isExsitUserName", function(value, element) {
+    var val = $.trim($(element).val());
     if ( !this.optional( element ) ) {
-      $.ajax({
-        url: "json/isExsitUserName.json",
-        type:"get",
-        async:false,
-        data: {value: username},
-        dataType: "json",
-        success: function (json) {
-          ret = json.success;
-        }
-      });
+      return existMethod( {type: 1,tag: val});
     }
-    return  ret;
-  }, "不好意思,已存在!");
+    return this.optional( element );
+  }, "用户名已存在!");
+
+  $.validator.addMethod("isExsitMobile", function(value, element) {
+    var val = $.trim($(element).val());
+    if ( !this.optional( element ) ) {
+      return existMethod( {type: 2,tag: val});
+    }
+    return this.optional( element );
+  }, "电话已存在!");
+
+  $.validator.addMethod("isExsitEmail", function(value, element) {
+    var val = $.trim($(element).val());
+    if ( !this.optional( element ) ) {
+      return existMethod({type: 3,tag: val});
+    }
+    return this.optional( element );
+  }, "邮箱已存在!");
+
+  $.validator.addMethod("isExsitCode", function(value, element) {
+    var val = $.trim($(element).val());
+    if ( !this.optional( element ) ) {
+      return existMethod({type: 4,tag: val});
+    }
+    return this.optional( element );
+  }, "邀请码不存在!");
 
   $.validator.addMethod("password", function(value, element) {
     return this.optional( element ) || /^[a-zA-Z0-9]{6,16}$/.test( value );

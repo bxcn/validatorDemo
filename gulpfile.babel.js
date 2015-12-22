@@ -60,6 +60,7 @@ gulp.task('serve', [ 'uglify',  'html', 'sass', 'json'], () => {
 
   gulp.watch(['app/**/*.html', 'app/js/**/*.js'], [ 'html', 'uglify']);
   gulp.watch(['app/sass/*.scss'], [ 'sass']);
+  gulp.watch(['app/json/*.json'], [ 'json']);
 });
 
 
